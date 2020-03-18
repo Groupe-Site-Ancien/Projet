@@ -13,6 +13,11 @@
                             Nom : {{$user->profile->nom ?? 'Nom'}}
                             <br>
                             Prénom : {{$user->profile->prenom ?? 'Prénom' }}
+                            <br>
+
+                            @can('update', $user->profile)
+                            <a href="/profiles/{{$user->id}}/edit">Modifier mon profil</a>
+                            @endcan
                         </div>
 
                     </div>

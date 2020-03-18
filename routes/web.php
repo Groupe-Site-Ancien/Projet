@@ -26,6 +26,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/profiles/{user}', 'ProfilesController@show')->name('profiles.show');
+Route::get('/profiles/{user}/edit', 'ProfilesController@edit')->name('profiles.edit');
+Route::patch('/profiles/{user}', 'ProfilesController@update')->name('profiles.update');
 
 /* Test e-mail
 Route::get('/test-contact', function () {
