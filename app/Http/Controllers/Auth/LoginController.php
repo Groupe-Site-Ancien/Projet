@@ -28,12 +28,13 @@ class LoginController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
-    /*
+
     public function authenticated($user)
     {
-        return redirect('/profiles/' . $user->id);
+        // permet de retourner sur sa page de profil lorsque l'on se connecte
+        return redirect('/profiles/' . auth()->user()->id);
     }
-    */
+
 
     /**
      * Create a new controller instance.

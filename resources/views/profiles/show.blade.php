@@ -8,11 +8,11 @@
                     <div class="card-header">Dashboard</div>
 
                         <div>
-                            Bonjour {{ $user->id}} !
+                            Bonjour {{$user->profile->prenom ?? 'Prénom' }} !
+                            <br>
+                            Vous êtes connecté avec l'identifiant : {{ $user->id }}
                             <br>
                             Nom : {{$user->profile->nom ?? 'Nom'}}
-                            <br>
-                            Prénom : {{$user->profile->prenom ?? 'Prénom' }}
                             <br>
 
                             @can('update', $user->profile)
