@@ -24,6 +24,7 @@
   <br />
   <div class="container box">
    <h3 align="center">E-mailing entre collègues CCI</h3><br />
+
    @if (count($errors) > 0)
     <div class="alert alert-danger">
      <button type="button" class="close" data-dismiss="alert">×</button>
@@ -34,6 +35,7 @@
      </ul>
     </div>
    @endif
+    
    @if ($message = Session::get('success'))
    <div class="alert alert-success alert-block">
     <button type="button" class="close" data-dismiss="alert">×</button>
