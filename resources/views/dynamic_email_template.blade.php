@@ -1,3 +1,6 @@
-<p>Hi, This is {{ $data['name'] }}</p>
-<p>I have some query like {{ $data['message'] }}.</p>
-<p>It would be appriciative, if you gone through this feedback.</p>
+<p>Bonjour,</p>
+<p>C'est votre collègue du CCI " {{ $data['name'] }} "</p>
+<p>Mon message est le suivant : </p>
+<p>" {{ $data['message'] }}. "</p>
+<p>Prenez soin de vous,</p>
+<p>Bien cordialement,</p>

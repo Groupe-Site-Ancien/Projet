@@ -22,3 +22,8 @@ Route::get('/sendemail', 'SendEmailController@index');
 
 Route::post('/sendemail/send', 'SendEmailController@send');
 
+
+Route::view('users','users');
+
+Route::post('users','Users@index');
+
