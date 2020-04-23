@@ -39,7 +39,7 @@ class CreateProfilesTable extends Migration
             // region precedente, utile pour jauger l'attractivite du master cci
             $table->string('region_prec')->nullable();
             // stockage du temoignage de l'etudiant par rapport a la formation cci
-            $table->string('temoignage')->nullable();
+            $table->string('temoignage',2000)->nullable();
             $table->timestamps();
         });
     }

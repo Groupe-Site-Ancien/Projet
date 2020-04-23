@@ -17,9 +17,9 @@ class CreateStagesTable extends Migration
         Schema::create('stages', function (Blueprint $table) {
             // id de la table stages
             $table->bigIncrements('id');
-            // id de la table profiles en cle etrangere
-            $table->unsignedBigInteger('profile_id')->index();
-            $table->foreign('profile_id')->references('id')->on('profiles');
+            // id de la table users en cle etrangere
+            $table->unsignedBigInteger('user_id')->index();
+            $table->foreign('user_id')->references('id')->on('users');
             // intitule de l'offre de stage
             $table->string('intitule_stage')->nullable();
             // domaine d'emploi du stage : dev, BI, infra... -> va servir pour moteur de recherche stage
@@ -31,9 +31,9 @@ class CreateStagesTable extends Migration
             // lieu exact du stage, ex : ville
             $table->string('ville_stage')->nullable();
             // description du stage, missions
-            $table->string('missions_stage')->nullable();
+            $table->string('missions_stage',2000)->nullable();
             // description du profil recherche
-            $table->string('profil_stage')->nullable();
+            $table->string('profil_stage',2000)->nullable();
             // remuneration - gratification stage
             $table->string('rem_stage')->nullable();
             // lien url vers l'offre de stage sur site entreprise ou linkedin par ex

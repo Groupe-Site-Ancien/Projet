@@ -18,14 +18,26 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- style personnalisé -->
+    <style type="text/css">
+        .onglet {
+            font-size: 13pt;
+            margin-right: 10%;
+        }
+        .drop-onglet {
+            font-size: 13pt;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
+
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand d-flex" href="{{ url('/') }}">
-                    <div><img src="/png/LogoCCIBleu.png" align="Logo" class="pr-3" style="height: 40px; border-right: 1px solid;"></div>
-                    <div class="pl-3 pt-2">Anciens CCI</div>
+                    <div><img src="/png/LogoCCIBleu.png" align="Logo" class="pr-3" style="height: 50px;"></div>
+                    <!--<div class="pl-3 pt-2">Anciens CCI</div>-->
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -34,29 +46,39 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item onglet" style="margin-left: 15%;">
+                            <a class="nav-link" href="#">Accueil<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item onglet">
+                            <a class="nav-link" href="#">Statistiques</a>
+                        </li>
+                        <li class="nav-item onglet">
+                            <a class="nav-link" href="#">Témoignages</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
+                            <li class="nav-item drop-onglet">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
-                                <li class="nav-item">
+                                <li class="nav-item drop-onglet">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown" style="font-size: 13pt;">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->profile->prenom }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a class="dropdown-item drop-onglet" href="/profiles/{{Auth::user()->id}}">Home</a>
+                                    <a class="dropdown-item drop-onglet" href="/profiles/{{Auth::user()->id}}/details">Profil</a>
+                                    <a class="dropdown-item drop-onglet" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}

@@ -6,10 +6,25 @@ use Illuminate\Database\Eloquent\Model;
 
 class Enquete extends Model
 {
-    protected $guarded = [];
+    public $table = 'enquete';
 
-    public function profile()
+    protected $fillable = ['user_id',
+                            'situation',
+                            'delai_emploi',
+                            'canal_emploi',
+                             'type_employeur',
+                            'nom_employeur',
+                            'temps_travail',
+                            'type_contrat',
+                            'domaine_emploi',
+                            'intitule_emploi',
+                            'region_emploi',
+                            'tranche_salaire',
+                            'salaire_net',
+                            'satisfaction_emploi'];
+
+    public function user()
     {
-        return $this->belongsTo(Profile::class);
+        return $this->belongsTo(User::class);
     }
 }

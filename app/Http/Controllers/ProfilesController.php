@@ -8,9 +8,22 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfilesController extends Controller
 {
+    /*
+    public function index($user)
+    {
+        $user = User::findOrFail($user);
+        return view('profiles.index', ['user' => $user]);
+    }
+    */
+
     public function show(User $user)
     {
         return view('profiles.show', compact('user'));
+    }
+
+    public function details(User $user)
+    {
+        return view('profiles.details', compact('user'));
     }
 
     public function edit(User $user)
@@ -25,12 +38,15 @@ class ProfilesController extends Controller
         $data = request()->validate([
             'nom' => 'required',
             'prenom' => 'required',
+            'promotion'=>'required',
+            'sexe'=>'required',
+            'regime_inscription'=>'required',
+            'age_entree_cci'=>'required',
+            'annee_dernier_diplome'=>'required',
+            'type_bac'=>'required',
+            'region_prec'=>'required',
     ]);
         $user->profile->update($data);
-
-        /* Version protégée (authentifié) mais ne fonctionne pas
-        auth()->user()->profile->update($data);
-        */
 
         return redirect("/profiles/{$user->id}");
     }

@@ -17,9 +17,9 @@ class CreateEnqueteTable extends Migration
         Schema::create('enquete', function (Blueprint $table) {
             // id de la table enquete
             $table->bigIncrements('id');
-            // id de la table profiles en cle etrangere
-            $table->unsignedBigInteger('profile_id')->index();
-            $table->foreign('profile_id')->references('id')->on('profiles');
+            // id de la table users en cle etrangere
+            $table->unsignedBigInteger('user_id')->index();
+            $table->foreign('user_id')->references('id')->on('users');
             // situation emploi au moment de l'enquete
             $table->string('situation')->nullable();
             // delai pour trouver premier emploi apres diplome cci

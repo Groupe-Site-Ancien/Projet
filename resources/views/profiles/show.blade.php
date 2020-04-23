@@ -34,13 +34,13 @@
     </div>
 
     <!-- Structure avec les cards -->
-    <div class="row" style="margin-top: 3%;">
+    <div class="row" style="margin-top: 3%; width: 100%;">
         <div class="card col-2 offset-2">
             <img class="card-img-top" src="/jpg/temoignage.jpg" alt="Témoignage">
             <div class="card-body">
                 <h5 class="card-title titre">Témoignage</h5>
                 <p class="card-text">Je raconte comment s'est passé le Master CCI et ce que cela m'a apporté.</p>
-                <a href="#" class="btn btn-primary">Je témoigne !</a>
+                <a href="/temoignage/{{$user->id}}/edit" class="btn btn-primary">Je témoigne !</a>
             </div>
         </div>
         <div class="card col-2 offset-1">
@@ -48,7 +48,7 @@
             <div class="card-body">
                 <h5 class="card-title titre">Enquête</h5>
                 <p class="card-text">Je réponds à l'enquête sur mon parcours après le Master CCI.</p>
-                <a href="#" class="btn btn-primary">Je réponds !</a>
+                <a href="/enquete" class="btn btn-primary">Je réponds !</a>
             </div>
         </div>
         <div class="card col-2 offset-1">
@@ -56,7 +56,7 @@
             <div class="card-body">
                 <h5 class="card-title titre">Stage</h5>
                 <p class="card-text">Mon entreprise ou des connaissances cherchent des stagiaires ?</p>
-                <a href="#" class="btn btn-primary">Je dépose une offre !</a>
+                <a href="/stages/create" class="btn btn-primary">Je dépose une offre !</a>
             </div>
         </div>
 

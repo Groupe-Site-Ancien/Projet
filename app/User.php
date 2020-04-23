@@ -55,4 +55,15 @@ class User extends Authenticatable
     {
         return $this->hasOne(Profile::class);
     }
+
+    public function stages()
+    {
+        return $this->hasMany(Stage::class);
+    }
+
+    public function enquete()
+    {
+        return $this->hasOne(Enquete::class);
+    }
+
 }
