@@ -37,8 +37,8 @@
             <div class="container">
                 <a class="navbar-brand d-flex" href="{{ url('/') }}">
                     <div><img src="/png/LogoCCIBleu.png" align="Logo" class="pr-3" style="height: 50px;"></div>
-                    <!--<div class="pl-3 pt-2">Anciens CCI</div>-->
                 </a>
+                <div class="pl-5"></div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -46,7 +46,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item onglet" style="margin-left: 15%;">
+                        <li class="nav-item onglet">
                             <a class="nav-link" href="#">Accueil<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item onglet">
@@ -78,6 +78,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item drop-onglet" href="/profiles/{{Auth::user()->id}}">Home</a>
                                     <a class="dropdown-item drop-onglet" href="/profiles/{{Auth::user()->id}}/details">Profil</a>
+                                    <a class="dropdown-item drop-onglet" href="/mail">Envoyer un mail</a>
                                     <a class="dropdown-item drop-onglet" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -95,9 +96,10 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4" style="min-height: 100%; position: relative;">
             @yield('content')
         </main>
+
     </div>
 </body>
 </html>

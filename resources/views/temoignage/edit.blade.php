@@ -11,9 +11,10 @@
             @method('PATCH')
 
             <div>
-                <div class="form-group row">
-                    <label for="temoignage" class="col-md-4 col-form-label" style="font-size: 14pt;">Mon témoignage</label>
-                    <br><br>
+                <div style="margin-bottom: 2%;">
+                    <h4>Mon témoignage</h4>
+                </div>
+                <div class="form-group">
                     <textarea id="temoignage"
                            class="form-control{{ $errors->has('temoignage') ? ' is invalid' : ''}}"
                            name="temoignage"
@@ -21,7 +22,7 @@
                               maxlength="2000"
                               title="Maximum 2000 caractères"
                               placeholder="Je saisis ici mon témoignage sur le Master CCI."
-                           autocomplete="temoignage" autofocus></textarea>
+                           autocomplete="temoignage" required autofocus></textarea>
                     @if($errors->has('temoignage'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('temoignage') }}</strong>
@@ -29,7 +30,7 @@
                      @endif
                 </div>
 
-                <div>
+                <div align="center" style="margin-top: 3%;">
                     <button class="btn btn-primary">Valider</button>
                 </div>
 

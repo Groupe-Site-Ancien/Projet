@@ -1,3 +1,13 @@
+<!-- Style -->
+<style>
+    /* style personnalisé pour les boutons radio */
+    .rad {
+        margin-left: 3%;
+        margin-right: 1%;
+        margin-top: 5px;
+    }
+</style>
+
 @extends('layouts.app')
 
 @section('content')
@@ -7,22 +17,28 @@
             @csrf
             @method('POST')
 
-            <div class="row">
-                <h2>Répondre à l'enquête</h2>
+            <div style="margin-bottom: 2%;">
+                <h4>Répondre à l'enquête</h4>
             </div>
+            <h6 style="margin-bottom: 2%;">Champs obligatoires <span style="color: red;">*</span></h6>
 
+            <!-- Situation actuelle -->
             <div class="form-group">
-            <label>Situation actuelle : </label>
-            <select name="situation">
+            <label>Situation actuelle <span style="color: red;">*</span></label>
+                <br>
+            <select name="situation" required>
                 <option value="En emploi">En emploi</option>
                 <option value="En études">En études</option>
                 <option value="En recherche d'emploi">En recherche d'emploi</option>
             </select>
             </div>
 
+            <!-- Delai pour trouver un emploi -->
             <div class="form-group">
-            <label>Combien de temps avez-vous mis pour trouver votre premier emploi après l'obtention du Master CCI ? </label>
-            <select name="delai_emploi">
+            <label>Combien de temps avez-vous mis pour trouver votre premier emploi après l'obtention du Master CCI ?
+                <span style="color: red;">*</span></label>
+                <br>
+            <select name="delai_emploi" required>
                 <option value="Immédiatement">Immédiatement</option>
                 <option value="Moins d'un mois">Moins d'un mois</option>
                 <option value="Entre 1 et 3 mois">Entre 1 et 3 mois</option>
@@ -30,9 +46,11 @@
             </select>
             </div>
 
+            <!-- Canal emploi -->
             <div class="form-group">
-            <label>Par quel moyen avez-vous obtenu votre premier emploi ? </label>
-            <select name="canal_emploi">
+            <label>Par quel moyen avez-vous obtenu votre premier emploi ? <span style="color: red;">*</span></label>
+                <br>
+            <select name="canal_emploi" required>
                 <option value="Suite à un stage">Suite à un stage</option>
                 <option value="Dépôt de CV en ligne">Dépôt de CV en ligne</option>
                 <option value="Site internet d'entreprise">Site internet d'entreprise</option>
@@ -41,11 +59,12 @@
             </select>
             </div>
 
-            <label for="type_employeur">Type d'employeur</label>
+            <!-- Type employeur -->
+            <label for="type_employeur">Type d'employeur <span style="color: red;">*</span></label>
             <div class="form-group row">
-                <input type="radio" name="type_employeur" value="Privé">
+                <input class="rad" type="radio" name="type_employeur" value="Privé" required>
                 <label>Privé</label>
-                <input type="radio" name="type_employeur" value="Public">
+                <input class="rad" type="radio" name="type_employeur" value="Public">
                 <label>Public</label>
                 @if($errors->has('type_employeur'))
                     <span class="invalid-feedback" role="alert">
@@ -53,14 +72,14 @@
                         </span>
                 @endif
             </div>
-            <br>
 
-            <div class="form-group row">
-                <label>Nom de l'entreprise : <span style="color: red;">*</span></label>
+            <!-- Nom employeur -->
+            <div class="form-group">
+                <label>Nom de l'entreprise <span style="color: red;">*</span></label>
                 <input type="text"
                        class="form-control{{ $errors->has('nom_employeur') ? ' is invalid' : ''}}"
                        name="nom_employeur"
-                       autocomplete="nom_employeur">
+                       autocomplete="nom_employeur" required>
                 @if($errors->has('nom_employeur'))
                     <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('nom_employeur') }}</strong>
@@ -68,11 +87,12 @@
                 @endif
             </div>
 
-            <label for="temps_travail">Temps de travail</label>
-            <div class="form-group row">
-                <input type="radio" name="temps_travail" value="Temps plein">
+            <!-- Temps de travail -->
+            <label for="temps_travail">Temps de travail <span style="color: red;">*</span></label>
+            <div class="form-group">
+                <input class="rad" type="radio" name="temps_travail" value="Temps plein" required>
                 <label>Temps plein</label>
-                <input type="radio" name="temps_travail" value="Temps partiel">
+                <input class="rad" type="radio" name="temps_travail" value="Temps partiel">
                 <label>Temps partiel</label>
                 @if($errors->has('temps_travail'))
                     <span class="invalid-feedback" role="alert">
@@ -81,11 +101,12 @@
                 @endif
             </div>
 
-            <label for="type_contrat">Type de contrat</label>
-            <div class="form-group row">
-                <input type="radio" name="type_contrat" value="CDI">
+            <!-- Type de contrat -->
+            <label for="type_contrat">Type de contrat <span style="color: red;">*</span></label>
+            <div class="form-group">
+                <input class="rad" type="radio" name="type_contrat" value="CDI" required>
                 <label>CDI</label>
-                <input type="radio" name="type_contrat" value="CDD">
+                <input class="rad" type="radio" name="type_contrat" value="CDD">
                 <label>CDD</label>
                 @if($errors->has('type_contrat'))
                     <span class="invalid-feedback" role="alert">
@@ -94,9 +115,11 @@
                 @endif
             </div>
 
-            <div class="form-group row">
+            <!-- Domaine emploi -->
+            <div class="form-group">
                 <label>Domaine de l'emploi <span style="color: red;">*</span></label>
-                <select name="domaine_emploi">
+                <br>
+                <select name="domaine_emploi" required>
                     <option value="Développement">Développement</option>
                     <option value="BI / Big data">BI / Big data</option>
                     <option value="Systèmes / réseaux">Systèmes / réseaux</option>
@@ -105,11 +128,12 @@
                 </select>
             </div>
 
-            <div class="form-group row">
-                <label>Intitulé de l'emploi<span style="color: red;">*</span></label>
+            <!-- Intitule emploi -->
+            <div class="form-group">
+                <label>Intitulé de l'emploi <span style="color: red;">*</span></label>
                 <input type="text"
                        class="form-control{{ $errors->has('intitule_emploi') ? ' is invalid' : ''}}"
-                       name="intitule_emploi">
+                       name="intitule_emploi" required>
                 @if($errors->has('intitule_emploi'))
                     <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('intitule_emploi') }}</strong>
@@ -117,9 +141,11 @@
                 @endif
             </div>
 
+            <!-- Region emploi -->
             <div class="form-group">
-                <label>Région de l'emploi<span style="color: red;">*</span></label>
-                <select name="region_emploi">
+                <label>Région de l'emploi <span style="color: red;">*</span></label>
+                <br>
+                <select name="region_emploi" required>
                     <option value="Auvergne-Rhône-Alpes">Auvergne-Rhône-Alpes</option>
                     <option value="Bourgogne-Franche-Comté">Bourgogne-Franche-Comté</option>
                     <option value="Bretagne">Bretagne</option>
@@ -138,9 +164,11 @@
                 </select>
             </div>
 
+            <!-- Salaire net mensuel -->
             <div class="form-group">
-                <label>Salaire net mensuel par mois après impôts<span style="color: red;">*</span></label>
-                <select name="tranche_salaire">
+                <label>Salaire net mensuel après impôts <span style="color: red;">*</span></label>
+                <br>
+                <select name="tranche_salaire" required>
                     <option value="Moins de 1500">Moins de 1500</option>
                     <option value="Entre 1500 et 1999">Entre 1500 et 1999</option>
                     <option value="Entre 2000 et 2499">Entre 2000 et 2499</option>
@@ -148,25 +176,27 @@
                 </select>
             </div>
 
-                <div class="form-group row">
-                    <label for="salaire_net" class="col-md-4 col-form-label">Précisez votre salaire net mensuel : </label>
-                    <input type="number"
-                           class="form-control{{ $errors->has('salaire_net') ? ' is invalid' : ''}}"
-                           name="salaire_net"
-                           min="1000"
-                           max="4000"
-                           step="1">
-                    @if($errors->has('salaire_net'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('salaire_net') }}</strong>
-                        </span>
-                    @endif
-                </div>
-            <br>
-
+            <!-- Salaire net mensuel -->
             <div class="form-group">
-                <label>Êtes-vous satisfait de votre emploi actuel ? </label>
-                <select name="satisfaction_emploi">
+                <label>Précisez votre salaire net mensuel</label>
+                <input type="number"
+                       class="form-control{{ $errors->has('salaire_net') ? ' is invalid' : ''}}"
+                       name="salaire_net"
+                       min="1000"
+                       max="10000"
+                       step="100">
+                @if($errors->has('salaire_net'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('salaire_net') }}</strong>
+                    </span>
+                @endif
+            </div>
+
+            <!-- Satisfaction emploi -->
+            <div class="form-group">
+                <label>Êtes-vous satisfait de votre emploi actuel ? <span style="color: red;">*</span></label>
+                <br>
+                <select name="satisfaction_emploi" required>
                     <option value="Très satisfait">Très satisfait</option>
                     <option value="Satisfait">Satisfait</option>
                     <option value="Insatisfait">Insatisfait</option>
@@ -174,8 +204,8 @@
                 </select>
             </div>
 
-                <div>
-                    <button class="btn btn-primary">Valider</button>
+                <div style="margin-top: 2%;">
+                    <button class="btn btn-success">Valider</button>
                 </div>
 
         </form>

@@ -11,28 +11,30 @@
             @method('POST')
 
             <div>
-                <label class="row" style="font-size: 14pt; font-weight: bold;">Proposer une offre de stage</label>
-                <br>
-                <h6 class="row">Champs obligatoires <span style="color: red;">*</span></h6>
-                <br>
+                <div style="margin-bottom: 2%;">
+                    <h4>Proposer une offre de stage</h4>
+                </div>
+                <h6 style="margin-bottom: 2%;">Champs obligatoires <span style="color: red;">*</span></h6>
 
-                <div class="form-group row">
-                    <label>Intitulé du stage<span style="color: red;">*</span></label>
+                <!-- Intitule stage -->
+                <div class="form-group">
+                    <label>Intitulé du stage <span style="color: red;">*</span></label>
                     <input type="text"
                            class="form-control{{ $errors->has('intitule_stage') ? ' is invalid' : ''}}"
                            name="intitule_stage"
-                           autocomplete="intitule_stage" autofocus>
+                           autocomplete="intitule_stage" required autofocus>
                     @if($errors->has('intitule_stage'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('intitule_stage') }}</strong>
                         </span>
                     @endif
                 </div>
-                <br>
 
-                <div class="form-group row">
+                <!-- Domaine stage -->
+                <div class="form-group">
                     <label>Domaine du stage <span style="color: red;">*</span></label>
-                    <select name="domaine_stage">
+                    <br>
+                    <select name="domaine_stage" required>
                         <option value="Développement">Développement</option>
                         <option value="BI / Big data">BI / Big data</option>
                         <option value="Systèmes / réseaux">Systèmes / réseaux</option>
@@ -40,25 +42,26 @@
                         <option value="Gestion de projet">Gestion de projet</option>
                     </select>
                 </div>
-                <br>
 
-                <div class="form-group row">
+                <!-- Entreprise -->
+                <div class="form-group">
                     <label>Entreprise d'accueil <span style="color: red;">*</span></label>
                     <input type="text"
                            class="form-control{{ $errors->has('entreprise_stage') ? ' is invalid' : ''}}"
                            name="entreprise_stage"
-                           autocomplete="entreprise_stage" autofocus>
+                           autocomplete="entreprise_stage" required>
                     @if($errors->has('entreprise_stage'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('entreprise_stage') }}</strong>
                         </span>
                     @endif
                 </div>
-                <br>
 
-                <div class="form-group row">
+                <!-- Region stage -->
+                <div class="form-group">
                     <label>Région du stage <span style="color: red;">*</span></label>
-                    <select name="region_stage">
+                    <br>
+                    <select name="region_stage" required>
                         <option value="Auvergne-Rhône-Alpes">Auvergne-Rhône-Alpes</option>
                         <option value="Bourgogne-Franche-Comté">Bourgogne-Franche-Comté</option>
                         <option value="Bretagne">Bretagne</option>
@@ -76,23 +79,23 @@
                         <option value="Etranger">Etranger</option>
                     </select>
                 </div>
-                <br>
 
-                <div class="form-group row">
+                <!-- Ville stage -->
+                <div class="form-group">
                     <label>Précisez la ville <span style="color: red;">*</span></label>
                     <input type="text"
                            class="form-control{{ $errors->has('ville_stage') ? ' is invalid' : ''}}"
                            name="ville_stage"
-                           autocomplete="ville_stage" autofocus>
+                           autocomplete="ville_stage" required>
                     @if($errors->has('ville_stage'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('ville_stage') }}</strong>
                         </span>
                     @endif
                 </div>
-                <br>
 
-                <div class="form-group row">
+                <!-- Missions du stage -->
+                <div class="form-group">
                     <label>Missions du stage <span style="color: red;">*</span></label>
                     <textarea class="form-control{{ $errors->has('missions_stage') ? ' is invalid' : ''}}"
                               name="missions_stage"
@@ -100,16 +103,16 @@
                               maxlength="2000"
                               title="Maximum 2000 caractères"
                               placeholder="Je saisis ici les missions principales du stage proposé."
-                              autocomplete="missions_stage"></textarea>
+                              autocomplete="missions_stage" required></textarea>
                     @if($errors->has('missions_stage'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('missions_stage') }}</strong>
                         </span>
                      @endif
                 </div>
-                <br>
 
-                <div class="form-group row">
+                <!-- Profil recherche pour le stage -->
+                <div class="form-group">
                     <label>Profil recherché <span style="color: red;">*</span></label>
                     <textarea class="form-control{{ $errors->has('profil_stage') ? ' is invalid' : ''}}"
                               name="profil_stage"
@@ -117,16 +120,16 @@
                               maxlength="2000"
                               title="Maximum 2000 caractères"
                               placeholder="Je saisis ici le profil recherché pour le stage."
-                              autocomplete="profil_stage"></textarea>
+                              autocomplete="profil_stage" required></textarea>
                     @if($errors->has('profil_stage'))
                         <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('profil_stage') }}</strong>
                             </span>
                     @endif
                 </div>
-                <br>
 
-                <div class="form-group row">
+                <!-- Gratification de stage -->
+                <div class="form-group">
                     <label>Gratification de stage (en euros brut par mois)</label>
                     <input type="text"
                            class="form-control{{ $errors->has('rem_stage') ? ' is invalid' : ''}}"
@@ -138,9 +141,9 @@
                             </span>
                     @endif
                 </div>
-                <br>
 
-                <div class="form-group row">
+                <!-- Lien URL vers l'offre de stage -->
+                <div class="form-group">
                     <label>Lien vers l'offre de stage</label>
                     <input type="text"
                            class="form-control{{ $errors->has('url_stage') ? ' is invalid' : ''}}"
@@ -152,10 +155,9 @@
                             </span>
                     @endif
                 </div>
-                <br>
 
-                <div>
-                    <button class="btn btn-primary">Valider</button>
+                <div align="center">
+                    <button class="btn btn-primary" style="margin-top: 2%;">Valider</button>
                 </div>
 
             </form>

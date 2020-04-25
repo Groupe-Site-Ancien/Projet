@@ -4,8 +4,9 @@
 
     <div class="col-md-10 offset-1">
         <br>
-        <h3 align="center">Liste des stages proposés</h3>
+        <h4 align="center">Liste des stages proposés</h4>
         <br>
+
         <div class="table-responsive">
             <table class="table table-striped">
                 <tr>
@@ -14,7 +15,7 @@
                     <th>Entreprise</th>
                     <th>Région</th>
                     <th>Ville</th>
-                    <th>Action</th>
+                    <th align="center" style="text-align: center;"></th>
                 </tr>
                 @foreach($stages as $row)
                     <tr>
@@ -23,7 +24,7 @@
                         <td>{{$row['entreprise_stage']}}</td>
                         <td>{{$row['region_stage']}}</td>
                         <td>{{$row['ville_stage']}}</td>
-                        <td><a href="/stages/show/{{$row['id']}}"><button class="btn btn-primary">Consulter</button></a></td>
+                        <td align="center"><a href="/stages/show/{{$row['id']}}"><button class="btn btn-primary">Consulter</button></a></td>
                     </tr>
                 @endforeach
             </table>

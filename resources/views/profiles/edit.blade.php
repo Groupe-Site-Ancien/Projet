@@ -1,3 +1,13 @@
+<!-- Style -->
+<style>
+    /* style personnalisé pour les boutons radio */
+    .rad {
+        margin-left: 3%;
+        margin-right: 1%;
+        margin-top: 5px;
+    }
+</style>
+
 @extends('layouts.app')
 
 @section('content')
@@ -10,7 +20,9 @@
             <div class="row">
                 <h2>Modifier mon profil</h2>
             </div>
+
             <div>
+                <!-- Nom -->
                 <div class="form-group row">
                     <label class="col-md-4 col-form-label">Nom</label>
                     <input id="nom"
@@ -18,7 +30,7 @@
                            class="form-control{{ $errors->has('nom') ? ' is invalid' : ''}}"
                            name="nom"
                            value="{{ old('nom') ?? $user->profile->nom }}"
-                           autocomplete="nom" autofocus>
+                           autocomplete="nom" required autofocus>
                     @if($errors->has('nom'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('nom') }}</strong>
@@ -26,6 +38,7 @@
                     @endif
                 </div>
 
+                <!-- Prénom -->
                 <div class="form-group row">
                     <label for="prenom" class="col-md-4 col-form-label">Prénom</label>
                     <input id="prenom"
@@ -33,7 +46,7 @@
                            class="form-control{{ $errors->has('prenom') ? ' is invalid' : ''}}"
                            name="prenom"
                            value="{{ old('prenom') ?? $user->profile->prenom }}"
-                           autocomplete="prenom">
+                           autocomplete="prenom" required>
                     @if($errors->has('prenom'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('prenom') }}</strong>
@@ -41,6 +54,7 @@
                     @endif
                 </div>
 
+                <!-- Promotion -->
                 <div class="form-group row">
                     <label for="promotion" class="col-md-4 col-form-label">Promotion</label>
                     <input type="number"
@@ -51,7 +65,7 @@
                            min="1990"
                            max="2020"
                            step="1"
-                           autocomplete="promotion">
+                           autocomplete="promotion" required>
                     @if($errors->has('promotion'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('promotion') }}</strong>
@@ -59,13 +73,13 @@
                     @endif
                 </div>
 
+                <!-- Sexe -->
                 <label for="sexe">Sexe</label>
                 <div class="form-group row">
-                    <input type="radio" id="M"
-                           name="sexe" value="M">
+                    <input class="rad" type="radio" id="M"
+                           name="sexe" value="M" required="true">
                     <label for="M">Masculin</label>
-
-                    <input type="radio" id="F"
+                    <input class="rad" type="radio" id="F"
                            name="sexe" value="F">
                     <label for="F">Féminin</label>
                     @if($errors->has('sexe'))
@@ -75,13 +89,13 @@
                     @endif
                 </div>
 
+                <!-- Régime d'inscription -->
                 <label for="regime_inscription">Régime d'inscription</label>
                 <div class="form-group row">
-                    <input type="radio" id="initiale"
-                           name="regime_inscription" value="initiale">
+                    <input class="rad" type="radio" id="initiale"
+                           name="regime_inscription" value="initiale" required="true">
                     <label for="initiale">Formation initiale</label>
-
-                    <input type="radio" id="continue"
+                    <input class="rad" type="radio" id="continue"
                            name="regime_inscription" value="continue">
                     <label for="continue">Formation continue</label>
                     @if($errors->has('regime_inscription'))
@@ -91,6 +105,7 @@
                     @endif
                 </div>
 
+                <!-- Âge lors de l'entrée en CCI -->
                 <div class="form-group row">
                     <label for="age_entree_cci" class="col-md-4 col-form-label">Âge lors de votre entrée en Master CCI</label>
                     <input type="number"
@@ -101,7 +116,7 @@
                            min="18"
                            max="100"
                            step="1"
-                           autocomplete="age_entree_cci">
+                           autocomplete="age_entree_cci" required>
                     @if($errors->has('age_entree_cci'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('age_entree_cci') }}</strong>
@@ -109,6 +124,7 @@
                     @endif
                 </div>
 
+                <!-- Année dernier diplome obtenu -->
                 <div class="form-group row">
                     <label for="annee_dernier_diplome" class="col-md-4 col-form-label">Année de votre dernier diplôme obtenu avant le CCI</label>
                     <input type="number"
@@ -119,7 +135,7 @@
                            min="1960"
                            max="2019"
                            step="1"
-                           autocomplete="annee_dernier_diplome">
+                           autocomplete="annee_dernier_diplome" required>
                     @if($errors->has('annee_dernier_diplome'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('annee_dernier_diplome') }}</strong>
@@ -127,15 +143,16 @@
                     @endif
                 </div>
 
+                <!-- Type de BAC obtenu -->
                 <label for="type_bac">Type de BAC obtenu</label>
                 <div class="form-group row">
-                    <input type="radio" name="type_bac" value="S">
+                    <input class="rad" type="radio" name="type_bac" value="S" required="true" style="margin-left: 3%;">
                     <label>S</label>
-                    <input type="radio" name="type_bac" value="ES">
+                    <input class="rad" type="radio" name="type_bac" value="ES" style="margin-left: 3%;">
                     <label>ES</label>
-                    <input type="radio" name="type_bac" value="L">
+                    <input class="rad" type="radio" name="type_bac" value="L">
                     <label>L</label>
-                    <input type="radio" name="type_bac" value="professionnel">
+                    <input class="rad" type="radio" name="type_bac" value="professionnel">
                     <label>Professionnel</label>
                     @if($errors->has('type_bac'))
                         <span class="invalid-feedback" role="alert">
@@ -144,8 +161,9 @@
                     @endif
                 </div>
 
+                <!-- Region precedente -->
                 <label>Région précédant votre entrée en Master CCI</label>
-                <select name="region_prec">
+                <select name="region_prec" required>
                     <option value="Auvergne-Rhône-Alpes">Auvergne-Rhône-Alpes</option>
                     <option value="Bourgogne-Franche-Comté">Bourgogne-Franche-Comté</option>
                     <option value="Bretagne">Bretagne</option>
@@ -163,7 +181,8 @@
                     <option value="Etranger">Etranger</option>
                 </select>
 
-                <div>
+                <br><br>
+                <div align="center">
                     <button class="btn btn-primary">Valider</button>
                 </div>
 

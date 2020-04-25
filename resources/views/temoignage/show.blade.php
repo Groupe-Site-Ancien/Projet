@@ -1,10 +1,3 @@
-<!-- style des balises et classes -->
-<style type="text/css">
-    .titre {
-        font-weight: bold;
-    }
-</style>
-
 @extends('layouts.app')
 
 @section('content')
@@ -16,10 +9,14 @@
         </div>
 
         <p>Voici votre témoignage :</p>
-        <div>{{$user->profile->temoignage ?? 'N\'hésitez pas à témoigner sur votre aventure au Master CCI, merci !'}}</div>
+        <div style="background-color: white; padding: 1%; border: solid 1px #b3d7f5; border-radius: 5px;">
+            {{$user->profile->temoignage ?? 'N\'hésitez pas à témoigner sur votre aventure au Master CCI, merci !'}}
+        </div>
 
         <br>
-        <a href="/profiles/{{$user->id}}"><button class="btn btn-primary">Retour à mon profil</button> </a>
+        <div align="center">
+        <a href="/profiles/{{$user->id}}"><button class="btn btn-primary">Retour à mon profil</button></a>
+        </div>
 
     </div>
 
