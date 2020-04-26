@@ -82,7 +82,7 @@
 
         <!-- Footer-->
         <footer style="margin-top: 2%; margin-bottom: 0px;
-        background-color:#d6e9f9; padding-left: 10%; padding-right: 10%; padding-top: 3%; padding-bottom: 3%; bottom: 0px; width: 100%;">
+        background-color:#d6e9f9; padding-left: 10%; padding-right: 10%; padding-top: 2%; padding-bottom: 2%; bottom: 0px; width: 100%;">
             <div class="container-fluid text-center text-md-left" style="bottom: 0;">
                 <div class="row" style="width: 100%; bottom: 0;">
                     <div class="col-md-3 mt-md-0 mt-2">
